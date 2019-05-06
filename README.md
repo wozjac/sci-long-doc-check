@@ -1,5 +1,6 @@
 # [ABAP] Code Inspector custom check - presence of long documentation
 This custom check checks whether the checked object or interface has the long documentation created for itself and public members (properties, methods, events).
+![example](https://www.mediafire.com/convkey/faba/ut3f93zijzq210t6g.jpg)
 
 The code is intentionally written without NW 7.4 (and higher) ABAP syntax. 
 
