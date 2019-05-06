@@ -57,14 +57,13 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
   METHOD check_attributes.
     DATA: attributes      TYPE seo_attributes,
           attribute       LIKE LINE OF attributes,
-          member_document TYPE ty_member_document,
-          document_id     TYPE doku_id.
+          member_document TYPE ty_member_document.
 
     attributes = m_object_info->get_attributes( ).
 
     LOOP AT attributes INTO attribute.
       CONCATENATE attribute-clsname attribute-cmpname INTO member_document-document_object_name RESPECTING BLANKS.
-      member_document-document_id = document_id.
+      member_document-document_id = m_object_info->m_document_id-attribute.
       member_document-member_name = attribute-cmpname.
 
       check_member(
@@ -77,15 +76,14 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
   METHOD check_events.
     DATA: events          TYPE seo_events,
           event           LIKE LINE OF events,
-          member_document TYPE ty_member_document,
-          document_id     TYPE doku_id.
+          member_document TYPE ty_member_document.
 
     events = m_object_info->get_events(  ).
 
     LOOP AT events INTO event.
       CONCATENATE event-clsname event-cmpname INTO member_document-document_object_name RESPECTING BLANKS.
       member_document-member_name = event-cmpname.
-      member_document-document_id = document_id.
+      member_document-document_id = m_object_info->m_document_id-event.
 
       check_member(
         member_document = member_document
@@ -154,15 +152,14 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
   METHOD check_methods.
     DATA: methods         TYPE seo_methods,
           method          LIKE LINE OF methods,
-          member_document TYPE ty_member_document,
-          document_id     TYPE doku_id.
+          member_document TYPE ty_member_document.
 
     methods = m_object_info->get_methods( ).
 
     LOOP AT methods INTO method.
       CONCATENATE method-clsname method-cmpname INTO member_document-document_object_name RESPECTING BLANKS.
       member_document-member_name = method-cmpname.
-      member_document-document_id = document_id.
+      member_document-document_id = m_object_info->m_document_id-method.
 
       check_member(
         member_document = member_document
