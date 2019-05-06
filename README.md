@@ -1,24 +1,26 @@
 # [ABAP] Code Inpsector custom check - presence of long documentation
 This custom check checks whether the checked object or interface has the long documentation created for itself and public members (properties, methods, events).
 
-The code is intenionally written without NW 7.4 (and higher) ABAP syntax. 
+The code is intentionally written without NW 7.4 (and higher) ABAP syntax. 
 
 ## Installation
 First, get the code:  
 - Install via [abapGit](https://github.com/larshp/abapGit)  
-- or manually: create and paste the code for classes: ... ... In ... paste in the  Class-relevant Local Types; it's implementation paste to "Local Types" include. Next, update the constants in ... to match your class names:      
+- or manually: create and paste the code for classes: ZCL_SCI_LONGDOC_CHECK, ZCL_SCI_LONGDOC_CHECK_CATEGORY. In ZCL_SCI_LONGDOC_CHECK paste *zcl_sci_longdoc_check.clas.locals_def* in the  Class-relevant Local Types; it's implementation *zcl_sci_longdoc_check.clas.locals_imp* paste to "Local Types" include. Next, update the constants in your ZCL_SCI_LONGDOC_CHECK to match your class names:      
 ```ABAP
  CONSTANTS:
-      c_class_name  TYPE seoclsname VALUE 'ZT38MP_CL_ZZ_CI_LDOC_CHECK' ##NO_TEXT,
-      c_category    TYPE string VALUE 'ZT38MP_CL_ZZ_CI_DOC_CATEGORY' ##NO_TEXT,
+      c_class_name  TYPE seoclsname VALUE 'ZCL_SCI_LONGDOC_CHECK' ##NO_TEXT,
+      c_category    TYPE string VALUE 'ZCL_SCI_LONGDOC_CHECK_CATEGORY' ##NO_TEXT,
 ```
   
 Secondly, install the check:
-- in SCI transaction menu Code Inspector -> Management od -> Tests
+- in SCI transaction, menu Code Inspector -> Management of -> Tests
 - find the installed classes and check them, save
 - from now on the new check should be available to select in Check Variant configuration
 
 ## Configuration
+After selecting the check in Check Variant, maintain the error types when long documentation is missing for the main object/interface and when docs are not present for public members:
+![attributes](https://www.mediafire.com/convkey/6f0e/5t0i011y0348ixb6g.jpg)
 
 ## License
 This extension is licensed under the [MIT license](http://opensource.org/licenses/MIT).
