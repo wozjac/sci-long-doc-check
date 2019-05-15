@@ -262,6 +262,8 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD run.
+    DATA: get_ok TYPE abap_bool.
+
     IF object_type <> 'CLAS'
       AND object_type <> 'INTF'.
 
@@ -269,7 +271,8 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
     ENDIF.
 
     IF ref_scan IS INITIAL.
-      IF get( ) <> abap_true OR ref_scan->subrc <> 0.
+      get_ok = get( ).
+      IF get_ok <> abap_true OR ref_scan->subrc <> 0.
         RETURN.
       ENDIF.
     ENDIF.
@@ -313,13 +316,14 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD create_exclude_list.
-    DATA: excluded_name TYPE string.
+    DATA: excluded_name TYPE string,
+          token         TYPE LINE OF stokesx_tab.
 
     IF ref_scan IS INITIAL.
       RETURN.
     ENDIF.
 
-    LOOP AT ref_scan->tokens INTO DATA(token)
+    LOOP AT ref_scan->tokens INTO token
       WHERE type = scan_token_type-comment
       AND str CS c_exclude_list_prefix.
 
