@@ -2,7 +2,7 @@
 
 # [ABAP] Code Inspector custom check - presence of long documentation
 This custom check checks whether the checked object or interface has long documentation created for itself and for public or protected members (properties, methods, events).
-![example](https://www.mediafire.com/convkey/faba/ut3f93zijzq210t6g.jpg)
+![example](http://public_repo.vipserv.org/images/sci/inspecition.png)
 
 Long documentation is the one created/accessed via F9, Ctrl+Shift+F9 in SAP GUI ABAP editor.
 The code is intentionally written without NW 7.4 (and higher) ABAP syntax. 
@@ -25,7 +25,7 @@ Secondly, install the check:
 ## Configuration
 ### Error types for inspection
 After selecting the check in Check Variant, maintain the error types when long documentation is missing for the main object/interface and when docs are not present for public members:
-![attributes](https://www.mediafire.com/convkey/6f0e/5t0i011y0348ixb6g.jpg)  
+![attributes](http://public_repo.vipserv.org/images/sci/sci_attributes.png)  
 Possible values: error, warning, info, no message.
 
 ### Excluding names
