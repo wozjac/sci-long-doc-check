@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/wozjac/sci-long-doc-check.svg?branch=master)](https://travis-ci.com/wozjac/sci-long-doc-check)
-
 # [ABAP] Code Inspector custom check - presence of long documentation
 This custom check checks whether the checked object or interface has long documentation created for itself and for public or protected members (properties, methods, events).
 ![example](http://public_repo.vipserv.org/images/sci/inspecition.png)
@@ -38,4 +36,7 @@ To exclude given names during inspection, place a comment prefixed with SCI_LDE 
 This extension is licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
 ## Author
-Feel free to contact me: wozjac@zoho.com or via LinkedIn (https://www.linkedin.com/in/jacek-wznk).
+Feel free to contact me:  
+- wozjac@zoho.com 
+- Twitter (https://twitter.com/jacekwoz)  
+- LinkedIn (https://www.linkedin.com/in/jacek-wznk)
