@@ -41,16 +41,18 @@ CLASS zcl_sci_longdoc_check DEFINITION PUBLIC INHERITING FROM cl_ci_test_scan CR
 
     METHODS:
       check_object,
-      check_member IMPORTING member_document TYPE ty_member_document
-                             error_code      TYPE sci_errc,
+      create_exclude_list,
       check_main_documentation,
       check_attributes,
       check_methods,
       check_events,
+
+      check_member IMPORTING member_document TYPE ty_member_document
+                             error_code      TYPE sci_errc,
+
       has_long_documentation IMPORTING document_id                   TYPE doku_id
                                        object_name                   TYPE dokhl-object
-                             RETURNING VALUE(has_long_documentation) TYPE abap_bool,
-      create_exclude_list.
+                             RETURNING VALUE(has_long_documentation) TYPE abap_bool.
 ENDCLASS.
 
 CLASS zcl_sci_longdoc_check IMPLEMENTATION.
@@ -68,8 +70,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
 
       check_member(
         member_document = member_document
-        error_code = c_error_codes-no_attribute_documentation
-      ).
+        error_code = c_error_codes-no_attribute_documentation ).
     ENDLOOP.
   ENDMETHOD.
 
@@ -87,8 +88,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
 
       check_member(
         member_document = member_document
-        error_code = c_error_codes-no_event_documentation
-      ).
+        error_code = c_error_codes-no_event_documentation ).
     ENDLOOP.
   ENDMETHOD.
 
@@ -100,8 +100,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
 
     has_class_documentation = has_long_documentation(
       document_id = m_object_info->m_document_id-object
-      object_name = document_object_name
-    ).
+      object_name = document_object_name ).
 
     IF has_class_documentation = abap_false.
       m_error_counter = m_error_counter + 1.
@@ -114,8 +113,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
           p_kind = m_missing_long_doc_error_type
           p_test = c_class_name
           p_code = c_error_codes-no_main_documentation
-          p_param_1 = m_object_info->m_object_name
-      ).
+          p_param_1 = m_object_info->m_object_name ).
     ENDIF.
   ENDMETHOD.
 
@@ -130,8 +128,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
 
     has_documentation = has_long_documentation(
       document_id = member_document-document_id
-      object_name = member_document-document_object_name
-    ).
+      object_name = member_document-document_object_name ).
 
     IF has_documentation = abap_false.
       m_error_counter = m_error_counter + 1.
@@ -144,8 +141,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
          p_kind = m_missing_member_error_type
          p_test = c_class_name
          p_code = error_code
-         p_param_1 = member_document-member_name
-      ).
+         p_param_1 = member_document-member_name ).
     ENDIF.
   ENDMETHOD.
 
@@ -163,8 +159,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
 
       check_member(
         member_document = member_document
-        error_code = c_error_codes-no_method_documentation
-      ).
+        error_code = c_error_codes-no_method_documentation ).
     ENDLOOP.
   ENDMETHOD.
 
@@ -205,8 +200,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
           EXPORTING
             p_test = p_test
             p_code = p_code
-          IMPORTING p_text = p_text
-        ).
+          IMPORTING p_text = p_text ).
     ENDCASE.
   ENDMETHOD.
 
@@ -229,8 +223,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
       p_name = c_class_name
       p_title = 'Options'   ##NO_TEXT
       p_attributes = attributes
-      p_display = p_display
-    ).
+      p_display = p_display ).
 
     IF cancelled = abap_true.
       RETURN.
@@ -279,8 +272,7 @@ CLASS zcl_sci_longdoc_check IMPLEMENTATION.
 
     m_object_info->set_object(
       object_name = object_name
-      object_type = object_type
-    ).
+      object_type = object_type ).
 
     create_exclude_list(  ).
     check_object( ).

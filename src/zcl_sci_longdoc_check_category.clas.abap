@@ -2,7 +2,7 @@ CLASS zcl_sci_longdoc_check_category DEFINITION INHERITING FROM cl_ci_category_r
   PUBLIC SECTION.
     METHODS:
       constructor.
-  PROTECTED SECTION.
+
   PRIVATE SECTION.
     CONSTANTS:
       c_category    TYPE string VALUE 'CL_CI_CATEGORY_TOP',
