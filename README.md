@@ -37,6 +37,7 @@ This extension is licensed under the [MIT license](http://opensource.org/license
 
 ## Author
 Feel free to contact me:  
-- wozjac@zoho.com 
-- Twitter (https://twitter.com/jacekwoz)  
+- wozjac@zoho.com
+- [jacekw.dev](https://jacekw.dev)
+- Bluesky (<https://jacekwoz.bsky.social>)  
 - LinkedIn (https://www.linkedin.com/in/jacek-wznk)
